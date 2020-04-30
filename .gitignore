@@ -1,4 +1,4 @@
 target/
 .idea/
 LOG_PATH_IS_UNDEFINED/
-springboot.iml
+*.iml

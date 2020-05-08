@@ -3,9 +3,7 @@ package com.afeiluo.service;
 import com.afeiluo.model.User;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 @Service
@@ -28,5 +26,19 @@ public class SwaggerService {
     public Boolean addOrUpdateUser(User user) {
         userMap.put(user.getId(), user);
         return true;
+    }
+
+    public Boolean add(String name, Integer age) {
+        User user = new User();
+        user.setId(getNextId());
+        user.setName(name);
+        user.setAge(age);
+        userMap.put(user.getId(), user);
+        return true;
+    }
+
+    private Integer getNextId() {
+        Integer maxId = Collections.max(userMap.keySet());
+        return maxId + 1;
     }
 }

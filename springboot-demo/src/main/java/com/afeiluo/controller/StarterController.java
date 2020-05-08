@@ -1,25 +1,24 @@
 package com.afeiluo.controller;
 
 import com.afeiluo.sevice.HelloService;
+import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+@Api(tags = "测试starter")
 @RestController
-@SpringBootApplication
-public class HelloApplication {
+@RequestMapping("starter")
+public class StarterController {
 
     @Autowired
     private HelloService helloService;
 
-    @RequestMapping("/")
+    @GetMapping("hello")
     public String service() {
         return helloService.sayHello();
     }
 
-    public static void main(String[] args) {
-        SpringApplication.run(HelloApplication.class, args);
-    }
 }
+
